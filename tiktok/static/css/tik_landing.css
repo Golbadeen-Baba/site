@@ -21,8 +21,8 @@ body {
 
 /* Logo image */
 .logo {
-    width: 60px;
-    max-width: 20vw;
+    width: 100%;
+    max-width: 20%;
     margin-bottom: 20px;
 }
 

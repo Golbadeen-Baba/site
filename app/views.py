@@ -42,7 +42,7 @@ def model_questionnaire_view(request):
             q6=request.POST.get('q6'),
             q7=request.POST.get('q7'),
         )
-        return redirect('thank_you')  # Redirect after submission
+        return redirect('thank-you')  # Redirect after submission
 
     return render(request, 'app/questions.html')
 

@@ -46,6 +46,7 @@
     </div>
 
     <div style="text-align: center;">
+      <button type="button" id="backBtn" style="display:none;">Back</button>
       <button type="button" id="nextBtn">Next</button>
       <button type="submit" id="submitBtn" style="display:none;">Submit</button>
     </div>
@@ -55,6 +56,7 @@
 <script>
   const steps = document.querySelectorAll('.step');
   const nextBtn = document.getElementById('nextBtn');
+  const backBtn = document.getElementById('backBtn');
   const submitBtn = document.getElementById('submitBtn');
   const progressBar = document.getElementById('progressBar');
 
@@ -64,8 +66,10 @@
     steps.forEach((step, i) => {
       step.classList.toggle('active', i === index);
     });
+
     progressBar.style.width = `${((index + 1) / steps.length) * 100}%`;
 
+    backBtn.style.display = index === 0 ? 'none' : 'inline-block';
     nextBtn.style.display = index === steps.length - 1 ? 'none' : 'inline-block';
     submitBtn.style.display = index === steps.length - 1 ? 'inline-block' : 'none';
   }
@@ -73,6 +77,13 @@
   nextBtn.addEventListener('click', () => {
     if (currentStep < steps.length - 1) {
       currentStep++;
+      showStep(currentStep);
+    }
+  });
+
+  backBtn.addEventListener('click', () => {
+    if (currentStep > 0) {
+      currentStep--;
       showStep(currentStep);
     }
   });
